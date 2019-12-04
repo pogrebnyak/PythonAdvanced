@@ -1,4 +1,4 @@
-def even_nambers(n):
-    return [even_namber for even_namber in range(n + 1)][::2]
+def even_numbers(n):
+    return [number for number in range(n + 1)][::2]
 
-print(even_nambers(30))
+print(even_numbers(30))
