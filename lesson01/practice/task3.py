@@ -1,9 +1,9 @@
 for number in range(1,101):
-    if number % 15 == 0:
+    if not number % 15:
         print('FizzBuzz')
-    elif number % 5 == 0:
+    elif not number % 5:
         print('Buzz')
-    elif number % 3 == 0:
+    elif not number % 3:
         print('Fizz')
     else:
         print(number)
