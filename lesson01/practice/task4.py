@@ -3,7 +3,6 @@ def bank(deposit_amount, number_years, percent):
     amount = deposit_amount
     for year in range(1, number_years + 1):
         amount *= 1 + percent/100
-        print(year, amount)
 
     return round(amount, 2)
 
