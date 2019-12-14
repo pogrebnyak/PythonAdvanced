@@ -2,7 +2,7 @@ class Store:
 
     total_amount = 0
 
-    def __init__(self, name_store, amount_sold_goods = 0):
+    def __init__(self, name_store, amount_sold_goods=0):
         self.name_store = name_store
         self.amount_sold_goods = amount_sold_goods
 
@@ -18,6 +18,6 @@ store1 = Store('Березка')
 store2 = Store('Солнышко')
 store3 = Store('Чайка')
 
-store1.sold('Тапки')
-store2.sold('Шляпу')
+store1.sold('Ручка')
+store2.sold('Шляпа')
 store1.sold('Шарф')
