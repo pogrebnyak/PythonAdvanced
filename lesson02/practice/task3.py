@@ -1,4 +1,4 @@
-class dot:
+class Dot:
 
     def __init__(self, x, y, z):
         self._x = x
@@ -27,41 +27,41 @@ class dot:
         return (f'({self._x}, {self._y}, {self._z})')
 
     def __add__(obj1, obj2):
-        return dot(
+        return Dot(
             obj1._x + obj2._x,
             obj1._y + obj2._y,
             obj1._z + obj2._z
         )
 
     def __sub__(obj1, obj2):
-        return dot(
+        return Dot(
             obj1._x - obj2._x,
             obj1._y - obj2._y,
             obj1._z - obj2._z
         )
 
     def __mul__(obj1, obj2):
-        return dot(
+        return Dot(
             obj1._x * obj2._x,
             obj1._y * obj2._y,
             obj1._z * obj2._z
         )
 
     def __truediv__(obj1, obj2):
-        return dot(
+        return Dot(
             obj1._x / obj2._x,
             obj1._y / obj2._y,
             obj1._z / obj2._z
         )
     def __neg__(self):
-        return dot(-self._x, -self._y, -self._z)
+        return Dot(-self._x, -self._y, -self._z)
 
 
 
 
 
-h1 = dot(1,2,3)
-h2 = dot(2,3,4)
+h1 = Dot(1,2,3)
+h2 = Dot(2,3,4)
 h1.set_x(5)
 h1.set_y(6)
 h1.set_z(7)
@@ -76,7 +76,7 @@ h5 = h1 * h2
 print(h5)
 h6 = h1 / h2
 print(h6)
-h7 = dot(3, -4, 2)
+h7 = Dot(3, -4, 2)
 print(-h7)
 
 
