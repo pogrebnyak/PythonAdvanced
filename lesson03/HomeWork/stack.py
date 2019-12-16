@@ -5,57 +5,76 @@ class Stack:    #LIFO
     def __init__(self):
         self.my_stack = deque()
 
-    def put_stack(self, a):
+    def push_stack(self, a):
         self.my_stack.append(a)
 
-    def get_stack(self):
-        try:
-            get_item = self.my_stack.pop()
-        except IndexError:
-            return f'Стек пуст'
-        return get_item
+    def pop_stack(self):
+        if len(self.my_stack):
+            return self.my_stack.pop()
+        else:
+            return 'Стек пуст'
+
+    def size_stack(self):
+        return len(self.my_stack)
 
     def __str__(self):
         return f'{self.my_stack}'
 
-class Queue(Stack):    #FIFO
+class Queue:    #FIFO
 
-    def get_stack(self):
-        try:
-            get_item = self.my_stack.popleft()
-        except IndexError:
-            return f'Очередь пуста'
-        return get_item
+    def __init__(self):
+        self.my_stack = deque()
+
+    def push_Queue(self, a):
+        self.my_stack.append(a)
+
+    def pop_Queue(self):
+        if len(self.my_stack):
+            return self.my_stack.pop()
+        else:
+            return ('Очередь пуста')
+
+    def size_Queue(self):
+        return len(self.my_stack)
+
+    def __str__(self):
+        return f'{self.my_stack}'
+
+
 
 
 d = Stack()
-d.put_stack('1')
-d.put_stack('2')
-d.put_stack('3')
-d.put_stack('4')
-d.put_stack('5')
+d.push_stack('1')
+d.push_stack('2')
+d.push_stack('3')
+d.push_stack('4')
+d.push_stack('5')
 print(d)
-print(d.get_stack())
-print(d.get_stack())
-print(d.get_stack())
-print(d.get_stack())
-print(d.get_stack())
-print(d.get_stack())
+print(d.size_stack())
+print()
+print(d.pop_stack())
+print(d.pop_stack())
+print(d.pop_stack())
+print(d.pop_stack())
+print(d.pop_stack())
+print(d.pop_stack())
 print(d)
-
+#
 d2 = Queue()
-d2.put_stack('1')
-d2.put_stack('2')
-d2.put_stack('3')
-d2.put_stack('4')
-d2.put_stack('5')
+d2.push_Queue('1')
+d2.push_Queue('2')
+d2.push_Queue('3')
+d2.push_Queue('4')
+d2.push_Queue('5')
 print(d2)
-print(d2.get_stack())
-print(d2.get_stack())
-print(d2.get_stack())
-print(d2.get_stack())
-print(d2.get_stack())
-print(d2.get_stack())
+print(d2.size_Queue())
+print()
+print(d2.pop_Queue())
+print(d2.pop_Queue())
+print(d2.pop_Queue())
+print(d2.pop_Queue())
+print(d2.pop_Queue())
+print(d2.pop_Queue())
 print(d2)
 
 
