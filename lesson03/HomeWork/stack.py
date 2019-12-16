@@ -24,7 +24,7 @@ class Queue(Stack):    #FIFO
         try:
             get_item = self.my_stack.popleft()
         except IndexError:
-            return f'Стек пуст'
+            return f'Очередь пуста'
         return get_item
 
 
