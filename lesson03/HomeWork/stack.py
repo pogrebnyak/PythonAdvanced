@@ -30,7 +30,7 @@ class Queue:    #FIFO
 
     def pop_Queue(self):
         if len(self.my_stack):
-            return self.my_stack.pop()
+            return self.my_stack.popleft()
         else:
             return ('Очередь пуста')
 
