@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 import requests
 
 
+
 while True:
     print('-' * 55)
     print('Програма з виведенням прогнозу погоди в заданій локації')
