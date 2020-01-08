@@ -10,8 +10,7 @@ while True:
     if city == '':
         city = 'Київ'
 
-    resp = requests.get(
-        f'https://ua.sinoptik.ua/погода-{city}/10-днів')
+    resp = requests.get(f'https://ua.sinoptik.ua/погода-{city}/10-днів')
 
     soup = BeautifulSoup(resp.text, 'lxml')
 
