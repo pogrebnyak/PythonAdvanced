@@ -1,46 +1,28 @@
-# coding: utf-8
 from bs4 import BeautifulSoup
 import requests
 
+city = input('Введите город: ')
+# city = 'Киев'
 
+resp = requests.get(
+    f'https://ua.sinoptik.ua/%D0%BF%D0%BE%D0%B3%D0%BE%D0%B4%D0%B0-{city}/10-%D0%B4%D0%BD%D1%96%D0%B2')
 
-while True:
-    print('-' * 55)
-    print('Програма з виведенням прогнозу погоди в заданій локації')
-    city = input('Введіть місто: ')
-    if city == '':
-        city = 'Київ'
+soup = BeautifulSoup(resp.text, 'lxml')
 
-    resp = requests.get(f'https://ua.sinoptik.ua/погода-{city}/10-днів')
+if soup.find("body", class_="ua p404"):
+    print('Такого города нет')
+else:
 
-    soup = BeautifulSoup(resp.text, 'lxml')
+    date_list = []
+    date_dict = {}
+    weather_list = (soup.find("div", class_="tabs").text).split()
+    parser_city = (soup.find("div", class_="cityName").text).split()
 
-    if soup.find("body", class_="ua p404"):
-        print('На жаль, інформація, яку ви шукали, в даний момент на сайті відсутня.')
-    else:
+    for i in range(0, len(weather_list), 7):
+        n = weather_list[0 + i:7 + i]
+        date_dict[n[1].lstrip('0')] = ' '.join(n)
+        date_list.append(n[1].lstrip('0'))
 
-        date_list = []
-        date_dict = {}
-        weather_list = (soup.find("div", class_="tabs").text).split()
-        parser_city = (soup.find("div", class_="cityName").text).split()
-
-        for i in range(0, len(weather_list), 7):
-            n = weather_list[0 + i:7 + i]
-            date_dict[n[1].lstrip('0')] = ' '.join(n)
-            date_list.append(n[1].lstrip('0'))
-
-            
-        print(' '.join(parser_city))
-        while True:
-            input_date = input(f'Введіть дату з {date_list[0]} по {date_list[len(date_list) - 1]} : ')
-            if input_date not in date_list:
-                for i in date_dict.values():
-                    print(i)
-                break
-            else:
-                print(date_dict[input_date])
-            if input('Показати іншу дату (т/н)') != 'т':
-                break
-            
-    if input('Продовжити пошук (т/н)') != 'т':
-        break
+    print(' '.join(parser_city))
+    c = input(f'Введите дату c {date_list[0]} по {date_list[len(date_list) - 1]}: ')
+    print(date_dict[c])
