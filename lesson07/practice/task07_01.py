@@ -18,7 +18,6 @@ class DataConnect:
         if exc_val:
             raise
 
-
 if __name__ == '__main__':
     db = 'test.db'
 
