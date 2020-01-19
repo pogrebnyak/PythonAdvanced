@@ -14,6 +14,10 @@ class DataConnect:
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.permission is 'w':
             self.connect.commit()
+        elif self.permission is 'r':
+            pass
+        else:
+            raise KeyError
         self.connect.close()
         if exc_val:
             raise
