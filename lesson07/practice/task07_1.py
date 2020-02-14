@@ -1,15 +1,15 @@
-import sqlite3
+import sqlite3 as sqlite
 
 
-class DataConnect:
+class Dbconnect:
 
     def __init__(self, db_name, permission='r'):
         self.db_name = db_name
         self.permission = permission
 
     def __enter__(self):
-        self.connect = sqlite3.connect(self.db_name)
-        return self.connect
+        self.connect = sqlite.connect(self.db_name)
+        return self.connect.cursor()
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         if self.permission is 'w':
@@ -25,11 +25,9 @@ class DataConnect:
 if __name__ == '__main__':
     db = 'test.db'
 
-    with DataConnect(db, 'w') as connection:
-        cursor = connection.cursor()
-        cursor.execute("INSERT INTO products VALUES (null,'lamp',20,2)")
+    with Dbconnect(db, 'w') as conn:
+        conn.execute("INSERT INTO products VALUES (null,'lamp',20,2)")
 
-    with DataConnect(db) as connection:
-        cursor = connection.cursor()
-        result = cursor.execute('SELECT * FROM products')
+    with Dbconnect(db) as conn:
+        result = conn.execute('SELECT * FROM products')
         print(result.fetchall())
