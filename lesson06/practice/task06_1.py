@@ -43,6 +43,9 @@ class MyList():
             return self._my_list[self._start-1]
         raise StopIteration()
 
+    def __getitem__(self,index):
+        return self._my_list[index]    
+
     def __add__(obj1, obj2):
         for i in obj2:
           obj1.append_(i)
@@ -56,6 +59,7 @@ b = MyList('3','77','one','two')
 c = MyList()
 print(c)
 print(a,b)
+print(a[3])
 a.insert_(3,'13')
 print(a,b)
 a.pop_(0)
