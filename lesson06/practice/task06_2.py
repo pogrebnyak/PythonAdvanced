@@ -9,22 +9,22 @@ class MyDict():
         self._kwargs = kwargs
         print(kwargs)
 		
-    def get(self, values, default=None):
+    def get_(self, values, default=None):
         for i in self._kwargs:
             print(repr(i))
             if i == values:
                 return self._kwargs[i]
         return default
     
-    def keys(self):
+    def keys_(self):
         result = [x for x in self._kwargs]
         return result
 
-    def values(self):
+    def values_(self):
         result = [self._kwargs[x] for x in self._kwargs]
         return result
 
-    def items(self):
+    def items_(self):
         result = [(x, self._kwargs[x]) for x in self._kwargs]
         return result
 
@@ -36,9 +36,9 @@ class MyDict():
 
 d = MyDict(d=32 , g=23, f='iuyti', kj='dfdf')
 c = MyDict(df=34, g=234, thr=876, tks='fdsf')
-print(d.keys())
-print(d.values())
-print(d.items())
+print(d.keys_())
+print(d.values_())
+print(d.items_())
 print()
 print(d + c)
 

@@ -5,13 +5,13 @@ class MyList():
         for i in args:
             self._my_list = self._my_list + [i]
          
-    def append(self, value):
+    def append_(self, value):
        self._my_list += [value]
 
-    def insert(self, index, value):
+    def insert_(self, index, value):
         self._my_list = self._my_list[0:index] + [value] + self._my_list[index:len(self._my_list)] 
         
-    def remove(self, value):
+    def remove_(self, value):
         flag = True
         for index, j in enumerate(self._my_list):
             if value == j:
@@ -20,7 +20,7 @@ class MyList():
         if flag:
             raise ValueError('list.remove(x): x not in list')
                            
-    def pop(self, index=None):
+    def pop_(self, index=None):
        if index == None:
             index = len(self._my_list) - 1
        result = self._my_list[index]
@@ -29,7 +29,7 @@ class MyList():
            raise IndexError('pop index out of range')
        return result 
          
-    def clear(self):
+    def clear_(self):
         self._my_list = []
 
     def __iter__(self):
@@ -45,7 +45,7 @@ class MyList():
 
     def __add__(obj1, obj2):
         for i in obj2:
-          obj1.append(i)
+          obj1.append_(i)
         return obj1  
     
     def __str__(self):
@@ -56,11 +56,16 @@ b = MyList('3','77','one','two')
 c = MyList()
 print(c)
 print(a,b)
-a.insert(3,'13')
+a.insert_(3,'13')
 print(a,b)
-a.pop(0)
+a.pop_(0)
 print(a,b)
 print(a + b)
+a.append_('123')
+print(a,b)
+a.clear_()
+print(a,b)
+
 
 
 
