@@ -1,8 +1,9 @@
 class MyList():
 
-    def __init__(self):
+    def __init__(self, *args):
         self._my_list = []
-        
+        for i in args:
+            self._my_list = self._my_list + [i]
          
     def append(self, value):
        self._my_list += [value]
@@ -17,7 +18,7 @@ class MyList():
                 self._my_list = self._my_list[0:index] + self._my_list[index + 1:len(self._my_list)]
                 flag = False
         if flag:
-            raise ValueError
+            raise ValueError('list.remove(x): x not in list')
                            
     def pop(self, index=None):
        if index == None:
@@ -50,23 +51,16 @@ class MyList():
     def __str__(self):
         return str(self._my_list)
 
-a = MyList()
+a = MyList(2,7,8,4,5)
+b = MyList('3','77','one','two')
 c = MyList()
-a.append('1')
-a.append('2')
-a.append('3')
-a.append('4')
-a.append('5')
-c.append('1')
-c.append('2')
-c.append('3')
-c.append('4')
-c.append('5')
+print(c)
+print(a,b)
 a.insert(3,'13')
+print(a,b)
 a.pop(0)
-print(a,c)
-print(type(a),type(c))
-print(a + c)
+print(a,b)
+print(a + b)
 
 
 
