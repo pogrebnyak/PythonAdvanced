@@ -2,8 +2,9 @@ class MyList():
 
     def __init__(self, *args):
         self._my_list = []
-        for i in args:
-            self._my_list = self._my_list + [i]
+        self._my_list = [*args]
+        #for i in args:
+        #    self._my_list = self._my_list + [i]
          
     def append_(self, value):
        self._my_list += [value]
@@ -24,7 +25,8 @@ class MyList():
        if index == None:
             index = len(self._my_list) - 1
        result = self._my_list[index]
-       self._my_list = self._my_list[0:index] + self._my_list[index + 1:len(self._my_list)]
+       del self._my_list[index]
+       #self._my_list = self._my_list[0:index] + self._my_list[index + 1:len(self._my_list)]
        if not result:
            raise IndexError('pop index out of range')
        return result 
@@ -62,7 +64,7 @@ print(a,b)
 print(a[3])
 a.insert_(3,'13')
 print(a,b)
-a.pop_(0)
+print(a.pop_())
 print(a,b)
 print(a + b)
 a.append_('123')
